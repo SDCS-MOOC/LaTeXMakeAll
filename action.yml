@@ -1,0 +1,44 @@
+name: Build-all Action for LaTeX
+description: Compile all matching LaTeX files under one directory, using the same compile rule
+author: Junkai DENG, Cheng XU
+inputs:
+  root_dir:
+    description: The root directory where all LaTeX file are located
+    required: true
+  file_glob:
+    description: The filename pattern which are matched with
+  compiler:
+    description: The LaTeX engine to be invoked
+    default: latexmk
+  args:
+    description: Extra arguments to be passed to the LaTeX engine
+    default: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
+  extra_system_packages:
+    description: Install extra packages by apk
+  pre_compile:
+    description: Arbitrary bash codes to be executed before compiling LaTeX documents
+  post_compile:
+    description: Arbitrary bash codes to be executed after compiling LaTeX documents
+  latexmk_shell_escape:
+    description: Instruct latexmk to enable --shell-escape
+  latexmk_use_lualatex:
+    description: Instruct latexmk to use LuaLaTeX
+  latexmk_use_xelatex:
+    description: Instruct latexmk to use XeLaTeX
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.root_dir }}
+    - ${{ inputs.file_glob }}
+    - ${{ inputs.compiler }}
+    - ${{ inputs.args }}
+    - ${{ inputs.extra_system_packages }}
+    - ${{ inputs.pre_compile }}
+    - ${{ inputs.post_compile }}
+    - ${{ inputs.latexmk_shell_escape }}
+    - ${{ inputs.latexmk_use_lualatex }}
+    - ${{ inputs.latexmk_use_xelatex }}
+branding:
+  icon: book
+  color: blue
