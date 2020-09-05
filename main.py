@@ -18,7 +18,7 @@ if __name__ == "__main__":
         sourcename = f.name
 
         os.chdir(f.parent)
-        os.system(cmd.format(basename, "", sourcename))
+        os.system(cmd.format(basename+"-slide", "", sourcename))
         os.system(cmd.format(basename+"-handout", "\\PassOptionsToClass\{handout\}\{beamer\}", sourcename))
 
         os.chdir(cwd)
