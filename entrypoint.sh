@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ex
+
 root_dir="${1}"
 file_glob="${2}"
 
