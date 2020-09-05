@@ -2,6 +2,8 @@
 
 set -ex
 
+echo "Compiling Files"
+
 root_dir="${1}"
 file_glob="${2}"
 
