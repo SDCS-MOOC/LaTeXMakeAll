@@ -7,6 +7,7 @@ inputs:
     required: true
   file_glob:
     description: The filename pattern which are matched with
+    required: true
 runs:
   using: docker
   image: Dockerfile
